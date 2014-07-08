@@ -161,7 +161,7 @@ LANGS+=			fortran
 .if !empty(PKG_OPTIONS:Mgcc-c++)
 LANGS+=			c++
 USE_TOOLS+=		perl
-CONFIGURE_ARGS+=	--enable-__cxa_atexit
+#CONFIGURE_ARGS+=	--enable-__cxa_atexit
 CONFIGURE_ARGS+=	--with-gxx-include-dir=${GCC_PREFIX}/include/c++/
 .else
 CONFIGURE_ARGS+=	--disable-build-with-cxx
