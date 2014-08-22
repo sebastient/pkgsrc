@@ -148,20 +148,16 @@ gen()
 		case $_action in
 		transform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|^$1\(/[^$_sep]*\.la[$_sep]\)|$2\1|g
-s|^$1\(/[^$_sep]*\.la\)$|$2\1|g
-EOF
+			echo "s|^$1\(/[^$_sep]*\.la[$_sep]\)|$2\1|g"
+			echo "s|^$1\(/[^$_sep]*\.la\)$|$2\1|g"
 			;;
 		untransform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|\([$_sep]\)$1\(/[^$_sep]*\.la[$_sep]\)|\1$2\2|g
-s|\([$_sep]\)$1\(/[^$_sep]*\.la[$_sep]\)|\1$2\2|g
-s|\([$_sep]\)$1\(/[^$_sep]*\.la\)$|\1$2\2|g
-s|^$1\(/[^$_sep]*\.la[$_sep]\)|$2\1|g
-s|^$1\(/[^$_sep]*\.la\)$|$2\1|g
-EOF
+			echo "s|\([$_sep]\)$1\(/[^$_sep]*\.la[$_sep]\)|\1$2\2|g"
+			echo "s|\([$_sep]\)$1\(/[^$_sep]*\.la[$_sep]\)|\1$2\2|g"
+			echo "s|\([$_sep]\)$1\(/[^$_sep]*\.la\)$|\1$2\2|g"
+			echo "s|^$1\(/[^$_sep]*\.la[$_sep]\)|$2\1|g"
+			echo "s|^$1\(/[^$_sep]*\.la\)$|$2\1|g"
 			;;
 		esac
 		;;
@@ -212,20 +208,16 @@ EOF
 		case $_action in
 		transform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|^$1\([$_sep]\)|$2\1|g
-s|^$1$|$2|g
-EOF
+			echo "s|^$1\([$_sep]\)|$2\1|g"
+			echo "s|^$1$|$2|g"
 			;;
 		untransform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|\([$_sep]\)$1\([$_sep]\)|\1$2\2|g
-s|\([$_sep]\)$1\([$_sep]\)|\1$2\2|g
-s|\([$_sep]\)$1$|\1$2|g
-s|^$1\([$_sep]\)|$2\1|g
-s|^$1$|$2|g
-EOF
+			echo "s|\([$_sep]\)$1\([$_sep]\)|\1$2\2|g"
+			echo "s|\([$_sep]\)$1\([$_sep]\)|\1$2\2|g"
+			echo "s|\([$_sep]\)$1$|\1$2|g"
+			echo "s|^$1\([$_sep]\)|$2\1|g"
+			echo "s|^$1$|$2|g"
 			;;
 		esac
 		;;
@@ -237,20 +229,16 @@ EOF
 		case $_action in
 		transform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|^$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|$2\1|g
-s|^$1/[^/$_sep]*\(/[^$_sep]*\)$|$2\1|g
-EOF
+			echo "s|^$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|$2\1|g"
+			echo "s|^$1/[^/$_sep]*\(/[^$_sep]*\)$|$2\1|g"
 			;;
 		untransform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|\([$_sep]\)$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|\1$2\2|g
-s|\([$_sep]\)$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|\1$2\2|g
-s|\([$_sep]\)$1/[^/$_sep]*\(/[^$_sep]*\)$|\1$2\2|g
-s|^$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|$2\1|g
-s|^$1/[^/$_sep]*\(/[^$_sep]*\)$|$2\1|g
-EOF
+			echo "s|\([$_sep]\)$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|\1$2\2|g"
+			echo "s|\([$_sep]\)$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|\1$2\2|g"
+			echo "s|\([$_sep]\)$1/[^/$_sep]*\(/[^$_sep]*\)$|\1$2\2|g"
+			echo "s|^$1/[^/$_sep]*\(/[^$_sep]*[$_sep]\)|$2\1|g"
+			echo "s|^$1/[^/$_sep]*\(/[^$_sep]*\)$|$2\1|g"
 			;;
 		esac
 		;;
@@ -271,20 +259,16 @@ EOF
 		case $_action in
 		transform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|^$1\(/[^$_sep]*\)$2\([$_sep]\)|$3\1$4|g
-s|^$1\(/[^$_sep]*\)$2$|$3\1$4|g
-EOF
+			echo "s|^$1\(/[^$_sep]*\)$2\([$_sep]\)|$3\1$4|g"
+			echo "s|^$1\(/[^$_sep]*\)$2$|$3\1$4|g"
 			;;
 		untransform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|\([$_sep]\)$1\(/[^$_sep]*\)$2\([$_sep]\)|\1$3\2$4\3|g
-s|\([$_sep]\)$1\(/[^$_sep]*\)$2\([$_sep]\)|\1$3\2$4\3|g
-s|\([$_sep]\)$1\(/[^$_sep]*\)$2$|\1$3\2$4|g
-s|^$1\(/[^$_sep]*\)$2\([$_sep]\)|$3\1$4|g
-s|^$1\(/[^$_sep]*\)$2$|$3\1$4|g
-EOF
+			echo "s|\([$_sep]\)$1\(/[^$_sep]*\)$2\([$_sep]\)|\1$3\2$4\3|g"
+			echo "s|\([$_sep]\)$1\(/[^$_sep]*\)$2\([$_sep]\)|\1$3\2$4\3|g"
+			echo "s|\([$_sep]\)$1\(/[^$_sep]*\)$2$|\1$3\2$4|g"
+			echo "s|^$1\(/[^$_sep]*\)$2\([$_sep]\)|$3\1$4|g"
+			echo "s|^$1\(/[^$_sep]*\)$2$|$3\1$4|g"
 			;;
 		esac
 		;;
@@ -330,20 +314,16 @@ EOF
 		case $_action in
 		transform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|^$1[^$_sep]*\([$_sep]\)|\1|g
-s|^$1[^$_sep]*$||g
-EOF
+			echo "s|^$1[^$_sep]*\([$_sep]\)|\1|g"
+			echo "s|^$1[^$_sep]*$||g"
 			;;
 		untransform)
 			$debug_log $wrapperlog "   (gen-transform) $_cmd: $@"
-			$cat << EOF
-s|\([$_sep]\)$1[^$_sep]*\([$_sep]\)|\1\2|g
-s|\([$_sep]\)$1[^$_sep]*\([$_sep]\)|\1\2|g
-s|\([$_sep]\)$1[^$_sep]*$|\1|g
-s|^$1[^$_sep]*\([$_sep]\)|\1|g
-s|^$1[^$_sep]*$||g
-EOF
+			echo "s|\([$_sep]\)$1[^$_sep]*\([$_sep]\)|\1\2|g"
+			echo "s|\([$_sep]\)$1[^$_sep]*\([$_sep]\)|\1\2|g"
+			echo "s|\([$_sep]\)$1[^$_sep]*$|\1|g"
+			echo "s|^$1[^$_sep]*\([$_sep]\)|\1|g"
+			echo "s|^$1[^$_sep]*$||g"
 			;;
 		esac
 		;;

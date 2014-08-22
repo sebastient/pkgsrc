@@ -705,16 +705,17 @@ ${_BLNK_COOKIE.${_pkg_}}:
 				dest=`${ECHO} $$dest | ${SED} ${BUILDLINK_FNAME_TRANSFORM.${_pkg_}}`; \
 				msg="$$src -> $$dest";			\
 			fi;						\
-			dir=`${DIRNAME} "$$dest"`;			\
-			if [ ! -d "$$dir" ]; then				\
-				${MKDIR} "$$dir";				\
+			dir="$${dest%/*}";				\
+			if [ ! -d "$$dir" ]; then			\
+				${MKDIR} "$$dir";			\
 			fi;						\
-			${RM} -f "$$dest";				\
+			if [ -e "$$dest" ]; then			\
+				${RM} -f "$$dest";			\
+			fi;						\
 			case "$$src" in					\
 			*.la)						\
-				${CAT} "$$src" |			\
 				${_BLNK_LT_ARCHIVE_FILTER.${_pkg_}}	\
-					> "$$dest";			\
+					"$$src" > "$$dest";		\
 				msg="$$msg (created)";			\
 				;;					\
 			*)						\
