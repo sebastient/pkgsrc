@@ -606,15 +606,16 @@ _LINKER_RPATH_FLAG=	-R
 # GCC passes rpath directives to the linker using "-Wl,-R".
 _COMPILER_RPATH_FLAG=	-Wl,${_LINKER_RPATH_FLAG}
 
+.if ${OPSYS} == "Darwin" || ${OPSYS} == "Linux" || ${OPSYS} == "SunOS"
+_COMPILER_ABI_FLAG.32=  -m32
+_COMPILER_ABI_FLAG.64=  -m64
+.endif
+
 .if !empty(MACHINE_ARCH:Mmips*)
 _COMPILER_ABI_FLAG.32=	-mabi=n32	# ABI == "32" == "n32"
 _COMPILER_ABI_FLAG.n32=	-mabi=n32
 _COMPILER_ABI_FLAG.o32=	-mabi=32
 _COMPILER_ABI_FLAG.64=	-mabi=64
-
-.  if defined(ABI) && !empty(ABI)
-MABIFLAG=	${_COMPILER_ABI_FLAG.${ABI}}
-.  endif
 .endif
 
 .if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS])
@@ -645,19 +646,10 @@ _GCC_SUBPREFIX!=	\
 _GCC_PREFIX=		${LOCALBASE}/${_GCC_SUBPREFIX}
 _GCC_ARCHDIR!=		\
 	if [ -x ${_GCC_PREFIX}bin/gcc ]; then				\
-		${DIRNAME} `${_GCC_PREFIX}bin/gcc ${MABIFLAG} -print-libgcc-file-name 2>/dev/null`; \
+		${DIRNAME} `${_GCC_PREFIX}bin/gcc ${_COMPILER_ABI_FLAG.${ABI}} -print-libgcc-file-name 2>/dev/null`; \
 	else								\
 		${ECHO} "_GCC_ARCHDIR_not_found";			\
 	fi
-.  if empty(_GCC_ARCHDIR:M*not_found*)
-.    if defined(MABIFLAG) && !empty(MABIFLAG)
-_GCC_PREFIX:=		${_GCC_ARCHDIR:H:H:H:H:H}/
-_GCC_SUBPREFIX:=	${_GCC_ARCHDIR:H:H:H:H:H:T}/
-.    else
-_GCC_PREFIX:=		${_GCC_ARCHDIR:H:H:H:H}/
-_GCC_SUBPREFIX:=	${_GCC_ARCHDIR:H:H:H:H:T}/
-.    endif
-.  endif
 _GCC_LIBDIRS=	${_GCC_ARCHDIR} ${_GCC_PREFIX}lib
 _GCC_LDFLAGS=	# empty
 .  for _dir_ in ${_GCC_LIBDIRS:N*not_found*}
@@ -769,11 +761,6 @@ _COMPILER_STRIP_VARS+=	${_GCC_VARS}
 # Pass the required flags to imake to tell it we're using gcc on Solaris.
 .if ${OPSYS} == "SunOS"
 IMAKEOPTS+=	-DHasGcc2=YES -DHasGcc2ForCplusplus=YES
-.endif
-
-.if ${OPSYS} == "Darwin" || ${OPSYS} == "Linux" || ${OPSYS} == "SunOS"
-_COMPILER_ABI_FLAG.32=  -m32
-_COMPILER_ABI_FLAG.64=  -m64
 .endif
 
 .if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS])
