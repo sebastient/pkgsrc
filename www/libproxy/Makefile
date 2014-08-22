@@ -17,10 +17,9 @@ CMAKE_ARGS+=	-DWITH_PYTHON:BOOL=OFF
 
 .include "../../mk/bsd.fast.prefs.mk"
 
-.if (${OPSYS} == "SunOS")
+.if ${OPSYS} == "SunOS"
 # add libraries needed for Solaris, and add stuff cmake would add it on its own
 CMAKE_ARGS+=		-DCMAKE_EXE_LINKER_FLAGS:STRING="-lnsl -lsocket ${COMPILER_RPATH_FLAG}${PREFIX}/lib"
-BUILDLINK_TRANSFORM+=	rm:-Wl,--no-as-needed
 .endif
 
 PKGCONFIG_OVERRIDE+=	bindings/csharp/libproxy-sharp-1.0.pc.cmake

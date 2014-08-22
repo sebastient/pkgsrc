@@ -20,7 +20,7 @@ PKGCONFIG_OVERRIDE+= libvcdinfo.pc.in
 
 .include "../../mk/bsd.prefs.mk"
 
-.if ${OPSYS} == "SunOS" || ${OPSYS} == "Darwin"
+.if ${OPSYS} == "Darwin"
 BUILDLINK_TRANSFORM+= rm:-Wl,--version-script=libvcdinfo.la.ver
 .endif
 

@@ -27,7 +27,6 @@ BUILDLINK_TRANSFORM+=	rm:-static
 .endif
 .if ${OPSYS} == "SunOS"
 LDFLAGS+=	-lresolv -lsocket -lnsl
-BUILDLINK_TRANSFORM+=	rm:-Wl,--warn-common
 BUILDLINK_TRANSFORM+=	rm:-static
 .endif
 .if ${OPSYS} == "Linux"

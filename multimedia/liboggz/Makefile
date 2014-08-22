@@ -18,9 +18,5 @@ PKGCONFIG_OVERRIDE+=	oggz.pc.in
 
 .include "options.mk"
 
-.if ${OPSYS} == "SunOS"
-BUILDLINK_TRANSFORM+=	rm:-Wl,--version-script=Version_script
-.endif
-
 .include "../../multimedia/libogg/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

@@ -24,7 +24,7 @@ INSTALLATION_DIRS+=	include/uuid lib/pkgconfig ${PKGMANDIR}/man3
 
 .include "../../mk/bsd.prefs.mk"
 
-.if ${OPSYS} == "Darwin" || ${OPSYS} == "SunOS"
+.if ${OPSYS} == "Darwin"
 BUILDLINK_TRANSFORM+=	rm:-Wl,--version-script=./libuuid/src/uuid.sym
 .endif
 

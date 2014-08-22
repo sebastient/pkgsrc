@@ -18,10 +18,6 @@ PKGCONFIG_OVERRIDE+=	fishsound.pc.in
 
 .include "options.mk"
 
-.if ${OPSYS} == "SunOS"
-BUILDLINK_TRANSFORM+=	rm:-Wl,--version-script=Version_script
-.endif
-
 .include "../../multimedia/liboggz/buildlink3.mk"
 .include "../../multimedia/libogg/buildlink3.mk"
 .include "../../audio/libsndfile/buildlink3.mk"

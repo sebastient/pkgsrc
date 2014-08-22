@@ -79,7 +79,7 @@ _OPSYS_WHOLE_ARCHIVE_FLAG=	-z allextract
 _OPSYS_NO_WHOLE_ARCHIVE_FLAG=	-z defaultextract
 
 # Remove flags specific to GNU ld.
-BUILDLINK_TRANSFORM+=	rm:-Wl,--export-dynamic
+BUILDLINK_TRANSFORM+=	rm:"-Wl,--[^ 	]*"
 BUILDLINK_TRANSFORM+=	rm:-Wl,-export-dynamic
 BUILDLINK_TRANSFORM+=	rm:-export-dynamic
 

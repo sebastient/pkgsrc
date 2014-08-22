@@ -33,7 +33,6 @@ CPPFLAGS.FreeBSD+=	-D__u32=uint32_t -D__u64=uint64_t
 .include "../../mk/bsd.prefs.mk"
 .if ${OPSYS} == "SunOS"
 CONFIGURE_ARGS+=	--without-versioned
-BUILDLINK_TRANSFORM+=	rm:-Wl,--version-script=Versions
 .endif
 
 .include "../../mk/dlopen.buildlink3.mk"

@@ -72,7 +72,7 @@ PLIST_SRC=		PLIST
 
 CFLAGS.SunOS+=		-Du_int32_t=uint32_t
 
-.if ${OPSYS} == "Darwin" || ${OPSYS} == "SunOS"
+.if ${OPSYS} == "Darwin"
 BUILDLINK_TRANSFORM+=	rm:-Wl,--as-needed
 .endif
 
