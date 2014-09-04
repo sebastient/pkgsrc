@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.9 2014/07/02 03:45:50 jnemeth Exp $
+# $NetBSD: Makefile,v 1.10 2014/08/28 10:58:18 jperkin Exp $
 
 DISTNAME=	util-linux-2.24.2
 PKGNAME=	${DISTNAME:S/util-linux/libuuid/}
@@ -23,21 +23,21 @@ CONFIGURE_ENV+=		LIBARCHSUFFIX=${LIBARCHSUFFIX:Q}
 PKGCONFIG_OVERRIDE+=	libuuid/uuid.pc.in
 
 BUILD_TARGET=		libuuid.la libuuid/uuid.pc
-INSTALLATION_DIRS+=	include/uuid lib/pkgconfig ${PKGMANDIR}/man3
+INSTALLATION_DIRS+=	include/uuid lib${LIBARCHSUFFIX}/pkgconfig ${PKGMANDIR}/man3
 
 .include "../../mk/bsd.prefs.mk"
 
-.if ${OPSYS} == "Darwin" || ${OPSYS} == "SunOS"
+.if ${OPSYS} == "Darwin"
 BUILDLINK_TRANSFORM+=	rm:-Wl,--version-script=./libuuid/src/uuid.sym
 .endif
 
 do-install:
 	${LIBTOOL} --mode=install ${INSTALL_LIB} ${WRKSRC}/libuuid.la \
-		${DESTDIR}${PREFIX}/lib
+		${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}
 	${INSTALL_DATA} ${WRKSRC}/libuuid/src/uuid.h \
 		${DESTDIR}${PREFIX}/include/uuid/uuid.h
 	${INSTALL_DATA} ${WRKSRC}/libuuid/uuid.pc \
-		${DESTDIR}${PREFIX}/lib/pkgconfig/uuid.pc
+		${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/pkgconfig/uuid.pc
 	set -e; for f in ${WRKSRC}/libuuid/man/*.3; do \
 		${INSTALL_MAN} $${f} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man3/; \
 	done
