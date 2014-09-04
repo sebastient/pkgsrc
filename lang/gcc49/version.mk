@@ -1,0 +1,2 @@
+# $NetBSD$
+GCC49_DIST_VERSION:=	4.9.1
