@@ -35,9 +35,10 @@ USE_LANGUAGES+=	c
 
 BUILD_DEPENDS+=		rpm2pkg>=2.1:../../pkgtools/rpm2pkg
 
+DEPENDS+=		gcc48-cc++>=4.8:../../lang/gcc48-cc++
 DEPENDS+=		binutils>=2.17:../../devel/binutils
 
-GCC_REQD+=		4.8
+GCC_PREFIX=		${BUILDLINK_PREFIX.gcc48}
 BINUTILS_PREFIX=	${PREFIX}/${MACHINE_GNU_PLATFORM}
 
 EMUL_PLATFORMS=		linux-i386 linux-x86_64
@@ -68,7 +69,7 @@ SUBST_FILES.installdir+=icc11/bin/intel64/iccvars_intel64.sh \
 .endif
 
 SUBST_STAGE.vars=	pre-configure
-SUBST_VARS.vars=	ICC_PREFIX ICC_ARCH OPSYS_EMULDIR _GCC_PREFIX BINUTILS_PREFIX
+SUBST_VARS.vars=	ICC_PREFIX ICC_ARCH OPSYS_EMULDIR GCC_PREFIX BINUTILS_PREFIX
 SUBST_FILES.vars=	util.h icc xiar README.pkgsrc
 
 PLIST_VARS+=		linux netbsd x86_64 linux_x86_64 netbsd_x86_64
@@ -106,5 +107,7 @@ do-install:
 	cd ${WRKSRC} && make install-${LOWER_OPSYS}-${ICC_ARCH} \
 		PREFIX=${DESTDIR}${PREFIX} PKGMANDIR=${PKGMANDIR}
 
+.include "../../lang/gcc48-cc++/buildlink3.mk"
 .include "../../devel/binutils/buildlink3.mk"
+
 .include "../../mk/bsd.pkg.mk"
