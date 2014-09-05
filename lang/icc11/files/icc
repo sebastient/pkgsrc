@@ -34,7 +34,7 @@ export ICC11_REALAS
 INTEL_LICENSE_FILE="${INTEL_LICENSE_FILE:+${INTEL_LICENSE_FILE}:}@ICC_PREFIX@/licenses:/opt/intel/licenses:${HOME}/intel/licenses"
 export INTEL_LICENSE_FILE
 
-PATH="@ICC_PREFIX@/bin/${icc_arch}:@GCC_PREFIX@/bin:${PATH:-/bin:/usr/bin}"
+PATH="@ICC_PREFIX@/bin/${icc_arch}:@_GCC_PREFIX@/bin:${PATH:-/bin:/usr/bin}"
 export PATH
 
 if [ -z "${dryrun}" ]
