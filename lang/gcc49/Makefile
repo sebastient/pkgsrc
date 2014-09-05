@@ -104,6 +104,8 @@ MAKE_ENV+=		ac_cv_path_SED=${TOOLS_SED}
 MAKE_ENV+=		lt_cv_path_SED=${TOOLS_SED}
 
 .if ${OPSYS} == "SunOS"
+# Causes multilib build problems with specific compiler combinations
+MAKE_ENV+=		gcc_cv_ld_as_needed=no
 # Determine whether to use binutils
 .  if exists(/usr/sfw/bin/gobjdump)
 CONFIGURE_ENV+=		OBJDUMP=/usr/sfw/bin/gobjdump
