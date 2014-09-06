@@ -12,7 +12,7 @@ GCC3_OBJC_BUILDLINK3_MK:=
 GCC3_PKGMODIF=	_${GCC3_INSTALLTO_SUBPREFIX}
 .    endif
 .  endif
-BUILDLINK_API_DEPENDS.gcc3-objc+=	gcc3${GCC3_PKGMODIF}-objc>=${_GCC_REQD}
+BUILDLINK_API_DEPENDS.gcc3-objc+=	gcc3${GCC3_PKGMODIF}-objc>=3.0
 BUILDLINK_ABI_DEPENDS.gcc3-objc+=	gcc3-objc>=3.3.5nb1
 BUILDLINK_PKGSRCDIR.gcc3-objc?=	../../lang/gcc3-objc
 BUILDLINK_LIBDIRS.gcc3-objc?=	\

@@ -5,7 +5,7 @@ BUILDLINK_TREE+=	gcc48-fortran
 .if !defined(GCC48_FORTRAN_BUILDLINK3_MK)
 GCC48_FORTRAN_BUILDLINK3_MK:=
 
-BUILDLINK_API_DEPENDS.gcc48-fortran+=	gcc48-fortran>=${_GCC_REQD}
+BUILDLINK_API_DEPENDS.gcc48-fortran+=	gcc48-fortran>=4.8
 BUILDLINK_PKGSRCDIR.gcc48-fortran?=	../../lang/gcc48-fortran
 
 BUILDLINK_GCC48_LIBDIRS=		gcc48/lib
