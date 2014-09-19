@@ -116,6 +116,10 @@ while read build_info_line; do
 		;;
 	USERGROUP_PHASE=*)
 		usergroup_phase=${build_info_line#USERGROUP_PHASE=}
+		;;
+	NO_BIN_ON_FTP=*)
+		restricted=${build_info_line#NO_BIN_ON_FTP=}
+		;;
 	esac
 done
 
@@ -251,6 +255,18 @@ fi
 
 # Save build runtime
 logpkgtime
+
+# Save a SHA512 sum of the package (if not restricted), saves doing all of
+# them single-threaded at the end of a bulk build and avoids re-computing for
+# packages we have already built.
+if [ -z "${restricted}" ]; then
+	mkdir -p ${packages}/checksums
+	(
+		cd ${packages}
+		${digest} SHA512 All/${pkgname}.tgz \
+		    > ${packages}/checksums/${pkgname}.sha512
+	)
+fi
 
 # Cleanup build logs on success
 rm -R ${logpkgdir}
