@@ -26,7 +26,6 @@ INSTALL_TARGET=	install-dev install-run
 MAKE_ENV+=	INSTALL=${INSTALL:Q} STRIPFLAG=${_STRIPFLAG_INSTALL:Q} \
 		pkgdir=${STAGEDIR:Q} MACHINE=${MACHINE:Q} LIBARCHSUFFIX=${LIBARCHSUFFIX:Q}
 MAKE_FILE=	GNUmakefile
-
 REPLACE_PERL+=	converter/pbm/pbmtox10bm
 REPLACE_PERL+=	editor/pnmflip
 REPLACE_PERL+=	editor/pnmquant
