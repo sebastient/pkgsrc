@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libgcc_crtstuff.c,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Currently dl_iterate_phdr error handling is hardcoded for FreeBSD 7+
 Expand code to handle all BSDs even though detection is only active for

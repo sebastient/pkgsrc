@@ -38,7 +38,14 @@ if [ "${config_version}" != "@PBULK_CONFIG_VERSION@" ]; then
 	exit 1
 fi
 
+logpkgtime() {
+	stop_time=`date '+%s'`
+	build_time=`expr ${stop_time} - ${start_time}`
+	echo "${pkgname}:${build_time}" >>${loc}/pkgtimes
+}
+
 cleanup() {
+	logpkgtime
 	if [ -n "${local_bulklog}" ]; then
 		mv ${logpkgdir} ${bulklog}/${pkgname}
 	fi
@@ -109,6 +116,10 @@ while read build_info_line; do
 		;;
 	USERGROUP_PHASE=*)
 		usergroup_phase=${build_info_line#USERGROUP_PHASE=}
+		;;
+	NO_BIN_ON_FTP=*)
+		restricted=${build_info_line#NO_BIN_ON_FTP=}
+		;;
 	esac
 done
 
@@ -146,6 +157,19 @@ set -e
 
 @PREFIX@/libexec/pbulk/client-clean
 
+# Attempt to move the pre-build status file into place.  If we're successful
+# we are the first build and we can now log the remaining details.
+ret=`mv ${loc}/status.pre-build ${loc}/status 2>/dev/null; echo $?`
+if [ ${ret} -eq 0 ]; then
+	opsys=`cd ${pkgsrc}/pkgtools/pkg_install && ${make} show-var VARNAME=OPSYS`
+	opver=`cd ${pkgsrc}/pkgtools/pkg_install && ${make} show-var VARNAME=OS_VERSION`
+	platform=`cd ${pkgsrc}/pkgtools/pkg_install && ${make} show-var VARNAME=MACHINE_ARCH`
+	compiler=`cd ${pkgsrc}/pkgtools/pkg_install && ${make} show-var VARNAME=PKGSRC_COMPILER`
+
+	echo "COMPILER=${compiler}" >> ${loc}/status
+	echo "PLATFORM=${opsys} ${opver}/${platform}" >> ${loc}/status
+fi
+
 # Create the output directory and clean it up
 rm -rf ${bulklog}/${pkgname}
 mkdir -p ${logpkgdir}
@@ -180,6 +204,9 @@ else
 	pkg_add_cmd=pkg_add_normal
 	cur_pkgdb="${pkgdb}"
 fi
+
+# Save package start time
+start_time=`date '+%s'`
 
 # Go to target directory
 cd ${pkgsrc}/${pkgdir}
@@ -225,6 +252,23 @@ fi
 # Comment the following out if you want to test all deinstall scripts.
 # This is quite expensive and mostly redundant, so it is disabled by default.
 #${pkg_delete} -r \* > /dev/null 2>&1 || true
+
+# Save build runtime
+logpkgtime
+
+# Save a SHA512 sum of the package (if not restricted), saves doing all of
+# them single-threaded at the end of a bulk build and avoids re-computing for
+# packages we have already built.
+if [ -z "${restricted}" ]; then
+	mkdir -p ${packages}/checksums ${packages}/pkginfo
+	(
+		cd ${packages}
+		${digest} SHA512 All/${pkgname}.tgz \
+		    > ${packages}/checksums/${pkgname}.sha512
+		${pkg_info} -X All/${pkgname}.tgz \
+		    > ${packages}/pkginfo/${pkgname}.pkginfo
+	)
+fi
 
 # Cleanup build logs on success
 rm -R ${logpkgdir}

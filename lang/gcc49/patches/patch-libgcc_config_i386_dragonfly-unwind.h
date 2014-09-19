@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libgcc_config_i386_dragonfly-unwind.h,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Support DragonFly.
 

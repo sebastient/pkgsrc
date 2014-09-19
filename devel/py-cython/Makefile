@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.21 2014/07/22 11:42:51 wiz Exp $
+# $NetBSD: Makefile,v 1.23 2014/09/14 17:45:20 wiz Exp $
 
-DISTNAME=	Cython-0.20.2
+DISTNAME=	Cython-0.21
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME:S/Cy/cy/}
 CATEGORIES=	lang python
 MASTER_SITES=	http://cython.org/release/
@@ -28,6 +28,7 @@ do-test:
 post-install:
 	cd ${DESTDIR}${PREFIX}/bin && \
 		${MV} cython cython${PYVERSSUFFIX} && \
+		${MV} cythonize cythonize${PYVERSSUFFIX} && \
 		${MV} cygdb cygdb${PYVERSSUFFIX}
 
 .include "../../lang/python/application.mk"

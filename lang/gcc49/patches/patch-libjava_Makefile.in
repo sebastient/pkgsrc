@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libjava_Makefile.in,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Tell libtool the fact that libjvm.so is a module to be opened with
 dlopen(3). This is actually needed on Mach-O systems like Darwin.

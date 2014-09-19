@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-gcc_configure,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Add dl_iterate_phdr detection for FreeBSD and DragonFly.
 Detection for NetBSD and OpenBSD is added but commented out in case this

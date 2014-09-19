@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.795 2014/08/18 21:22:00 szptvlfn Exp $
+# $NetBSD: Makefile,v 1.800 2014/09/10 21:39:49 szptvlfn Exp $
 #
 
 COMMENT=	Text processing utilities (does not include desktop publishing)
@@ -206,16 +206,20 @@ SUBDIR+=	helpdeco
 SUBDIR+=	hevea
 SUBDIR+=	highlight
 SUBDIR+=	hre
+SUBDIR+=	hs-attoparsec
 SUBDIR+=	hs-blaze-html
 SUBDIR+=	hs-blaze-markup
+SUBDIR+=	hs-case-insensitive
 SUBDIR+=	hs-cgrep
 SUBDIR+=	hs-hscolour
+SUBDIR+=	hs-pandoc-types
 SUBDIR+=	hs-parsec
 SUBDIR+=	hs-polyparse
 SUBDIR+=	hs-regex-base
 SUBDIR+=	hs-regex-posix
 SUBDIR+=	hs-stringsearch
 SUBDIR+=	hs-tagsoup
+SUBDIR+=	hs-texmath
 SUBDIR+=	hs-xml
 SUBDIR+=	html
 SUBDIR+=	html2text
@@ -456,6 +460,7 @@ SUBDIR+=	p5-Template-Plugin-Latex
 SUBDIR+=	p5-Template-Plugin-Number-Format
 SUBDIR+=	p5-Template-Plugin-YAML
 SUBDIR+=	p5-Template-Tiny
+SUBDIR+=	p5-Test-YAML
 SUBDIR+=	p5-Text-Affixes
 SUBDIR+=	p5-Text-Aspell
 SUBDIR+=	p5-Text-Autoformat

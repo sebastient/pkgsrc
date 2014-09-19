@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-gcc_config.gcc,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 * Add t-crtstuff to tmake_file on NetBSD.
 * Add netbsd-stdint.h to tm_file on NetBSD.

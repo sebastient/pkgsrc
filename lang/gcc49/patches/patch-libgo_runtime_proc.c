@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libgo_runtime_proc.c,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 SunOS libelf does not support largefile.
 

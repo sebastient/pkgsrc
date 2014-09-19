@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-gcc_ginclude_stddef.h,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Fix build on NetBSD i386/amd64 after the ansi.h header include protection
 name change.

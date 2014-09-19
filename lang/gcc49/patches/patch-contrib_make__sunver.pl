@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-contrib_make__sunver.pl,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Find /usr/bin/elfdump on SmartOS.
 

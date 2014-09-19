@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libstdc++-v3_config_os_bsd_dragonfly_ctype__base.h,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Support DragonFly.
 

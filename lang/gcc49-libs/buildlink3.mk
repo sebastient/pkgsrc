@@ -1,4 +1,4 @@
-# $NetBSD$
+# $NetBSD: buildlink3.mk,v 1.1 2014/09/04 18:49:10 jperkin Exp $
 
 BUILDLINK_TREE+=	gcc49-libs
 
