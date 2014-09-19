@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.48 2013/11/30 11:14:10 richard Exp $
+# $NetBSD: Makefile,v 1.50 2014/09/10 10:46:07 richard Exp $
 
 DISTNAME=	zlib-1.2.8
 PKGREVISION=	1
