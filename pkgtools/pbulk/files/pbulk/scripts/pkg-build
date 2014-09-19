@@ -38,7 +38,14 @@ if [ "${config_version}" != "@PBULK_CONFIG_VERSION@" ]; then
 	exit 1
 fi
 
+logpkgtime() {
+	stop_time=`date '+%s'`
+	build_time=`expr ${stop_time} - ${start_time}`
+	echo "${pkgname}:${build_time}" >>${loc}/pkgtimes
+}
+
 cleanup() {
+	logpkgtime
 	if [ -n "${local_bulklog}" ]; then
 		mv ${logpkgdir} ${bulklog}/${pkgname}
 	fi
@@ -181,6 +188,9 @@ else
 	cur_pkgdb="${pkgdb}"
 fi
 
+# Save package start time
+start_time=`date '+%s'`
+
 # Go to target directory
 cd ${pkgsrc}/${pkgdir}
 # Clean build area, just in case
@@ -225,6 +235,9 @@ fi
 # Comment the following out if you want to test all deinstall scripts.
 # This is quite expensive and mostly redundant, so it is disabled by default.
 #${pkg_delete} -r \* > /dev/null 2>&1 || true
+
+# Save build runtime
+logpkgtime
 
 # Cleanup build logs on success
 rm -R ${logpkgdir}
