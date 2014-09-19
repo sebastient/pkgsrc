@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libstdc++-v3_config_os_bsd_netbsd_ctype__inline.h,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Support _CTYPE_BL
 

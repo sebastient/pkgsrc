@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.73 2014/04/17 13:08:24 wiz Exp $
+# $NetBSD: Makefile,v 1.75 2014/09/10 10:41:13 richard Exp $
 
 DISTNAME=	gmp-6.0.0a
 CATEGORIES=	devel math

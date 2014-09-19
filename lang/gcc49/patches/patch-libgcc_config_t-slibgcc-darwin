@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libgcc_config_t-slibgcc-darwin,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 If we don't install libgcc_s.10.[45].dylib, our gcc links binaries
 with *both* /usr/lib/libgcc_s.1.dylib and

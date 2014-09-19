@@ -1,4 +1,4 @@
-# $NetBSD$
+# $NetBSD: Makefile,v 1.3 2014/09/07 07:35:14 wiz Exp $
 
 GCC_PKGNAME=	gcc49
 .include	"version.mk"
@@ -91,6 +91,15 @@ CONFIGURE_ARGS+=	--disable-bootstrap
 CONFIGURE_ARGS+=	STRIP_FOR_TARGET=${TOOLS_PLATFORM.strip}
 .endif
 
+.if !empty(MACHINE_PLATFORM:MDarwin-[0-8].*-*)
+CONFIGURE_ARGS+=       --with-dwarf2
+CONFIGURE_ARGS+=       --disable-libitm
+.endif
+
+.if !empty(MACHINE_PLATFORM:MDarwin-[0-8].*-powerpc)
+CONFIGURE_ARGS+=       --disable-multilib
+.endif
+
 .if !empty(MACHINE_PLATFORM:MNetBSD-*-i386) || !empty(MACHINE_PLATFORM:MLinux-*-i386)
 CONFIGURE_ARGS+=	--with-arch=i486 --with-tune=i486
 .endif
@@ -104,6 +113,8 @@ MAKE_ENV+=		ac_cv_path_SED=${TOOLS_SED}
 MAKE_ENV+=		lt_cv_path_SED=${TOOLS_SED}
 
 .if ${OPSYS} == "SunOS"
+# Causes multilib build problems with specific compiler combinations
+MAKE_ENV+=		gcc_cv_ld_as_needed=no
 # Determine whether to use binutils
 .  if exists(/usr/sfw/bin/gobjdump)
 CONFIGURE_ENV+=		OBJDUMP=/usr/sfw/bin/gobjdump

@@ -1,4 +1,4 @@
-# $NetBSD: gcc.mk,v 1.148 2014/06/09 23:29:31 ryoon Exp $
+# $NetBSD: gcc.mk,v 1.151 2014/09/06 08:32:55 jperkin Exp $
 #
 # This is the compiler definition for the GNU Compiler Collection.
 #
@@ -13,10 +13,8 @@
 #	compiler version a package requires.
 #
 # USE_PKGSRC_GCC
-#	Force using the appropriate version of GCC from pkgsrc based on
-#	GCC_REQD instead of the native compiler.
-#
-#	This should be disabled only for debugging.
+#	When set to "yes", use an appropriate version of GCC from
+#	pkgsrc based on GCC_REQD instead of the native compiler.
 #
 # USE_PKGSRC_GCC_RUNTIME
 #	When set to "yes", the runtime gcc libraries (libgcc, libstdc++
@@ -31,10 +29,9 @@
 #	ONLY_FOR_COMPILER for that purpose. This is a list of version
 #	numbers, of which the maximum version is the definitive one.
 #
-#	NOTE: Be conservative when setting GCC_REQD, as lang/gcc3 is
-#	known not to build on some platforms, e.g. Darwin.  If gcc3 is
-#	required, set GCC_REQD=3.0 so that we do not try to pull in
-#	lang/gcc3 unnecessarily and have it fail.
+#	This variable can also be set by the user when USE_PKGSRC_GCC
+#	is in effect to ensure that a specific compiler is used for
+#	packages which do not specify a higher version.
 #
 # USE_GCC_RUNTIME
 #	Packages which build shared libraries but do not use libtool to
@@ -108,7 +105,7 @@ GCC_REQD+=	20120614
 
 # _GCC_DIST_VERSION is the highest version of GCC installed by the pkgsrc
 # without the PKGREVISIONs.
-_GCC_DIST_NAME:=	gcc48
+_GCC_DIST_NAME:=	gcc49
 .include "../../lang/${_GCC_DIST_NAME}/version.mk"
 _GCC_DIST_VERSION:=	${${_GCC_DIST_NAME:tu}_DIST_VERSION}
 
@@ -137,6 +134,9 @@ _GCC47_PATTERNS= 4.7 4.7.*
 
 # _GCC48_PATTERNS matches N s.t. 4.8 <= N < 4.9.
 _GCC48_PATTERNS= 4.8 4.8.*
+
+# _GCC49_PATTERNS matches N s.t. 4.9 <= N < 4.10.
+_GCC49_PATTERNS= 4.9 4.9.*
 
 # _GCC_AUX_PATTERNS matches 8-digit date YYYYMMDD*
 _GCC_AUX_PATTERNS= 20[1-2][0-9][0-1][0-9][0-3][0-9]*
@@ -272,6 +272,12 @@ _NEED_GCC48?=	no
 _NEED_GCC48=	yes
 .  endif
 .endfor
+_NEED_GCC49?=	no
+.for _pattern_ in ${_GCC49_PATTERNS}
+.  if !empty(_GCC_REQD:M${_pattern_})
+_NEED_GCC49=	yes
+.  endif
+.endfor
 _NEED_GCC_AUX?=	no
 .for _pattern_ in ${_GCC_AUX_PATTERNS}
 .  if !empty(_GCC_REQD:M${_pattern_})
@@ -283,8 +289,8 @@ _NEED_NEWER_GCC=NO
     !empty(_NEED_GCC34:M[nN][oO]) && !empty(_NEED_GCC44:M[nN][oO]) && \
     !empty(_NEED_GCC45:M[nN][oO]) && !empty(_NEED_GCC46:M[nN][oO]) && \
     !empty(_NEED_GCC47:M[nN][oO]) && !empty(_NEED_GCC48:M[nN][oO]) && \
-    !empty(_NEED_GCC_AUX:M[nN][oO])
-_NEED_GCC48=	yes
+    !empty(_NEED_GCC49:M[nN][oO]) && !empty(_NEED_GCC_AUX:M[nN][oO])
+_NEED_GCC49=	yes
 .endif
 
 # Assume by default that GCC will only provide a C compiler.
@@ -304,6 +310,8 @@ LANGUAGES.gcc=	c c++ fortran fortran77 java objc
 .elif !empty(_NEED_GCC47:M[yY][eE][sS])
 LANGUAGES.gcc=	c c++ fortran fortran77 go java objc obj-c++
 .elif !empty(_NEED_GCC48:M[yY][eE][sS])
+LANGUAGES.gcc=	c c++ fortran fortran77 go java objc obj-c++
+.elif !empty(_NEED_GCC49:M[yY][eE][sS])
 LANGUAGES.gcc=	c c++ fortran fortran77 go java objc obj-c++
 .elif !empty(_NEED_GCC_AUX:M[yY][eE][sS])
 LANGUAGES.gcc=	c c++ fortran fortran77 objc ada
@@ -467,6 +475,27 @@ MAKEFLAGS+=		_IGNORE_GCC=yes
 _GCC_PKGSRCDIR=		../../lang/gcc48-cc++
 _GCC_DEPENDENCY=	gcc48-cc++>=${_GCC_REQD}:../../lang/gcc48-cc++
 _USE_GCC_SHLIB?=	yes
+.  endif
+.elif !empty(_NEED_GCC49:M[yY][eE][sS])
+#
+# We require gcc-4.9.x in the lang/gcc49-* directory.
+#
+_GCC_PKGBASE=		gcc49
+.  if !empty(PKGPATH:Mlang/gcc49)
+_IGNORE_GCC=		yes
+MAKEFLAGS+=		_IGNORE_GCC=yes
+.  endif
+.  if !defined(_IGNORE_GCC) && !empty(_LANGUAGES.gcc)
+_GCC_PKGSRCDIR=		../../lang/gcc49
+_GCC_DEPENDENCY=	gcc49>=${_GCC_REQD}:../../lang/gcc49
+.    if !empty(_LANGUAGES.gcc:Mc++) || \
+        !empty(_LANGUAGES.gcc:Mfortran) || \
+        !empty(_LANGUAGES.gcc:Mfortran77) || \
+        !empty(_LANGUAGES.gcc:Mgo) || \
+        !empty(_LANGUAGES.gcc:Mobjc) || \
+        !empty(_LANGUAGES.gcc:Mobj-c++)
+_USE_GCC_SHLIB?=	yes
+.    endif
 .  endif
 .elif !empty(_NEED_GCC_AUX:M[yY][eE][sS])
 #
@@ -815,6 +844,8 @@ PREPEND_PATH+=	${_GCC_DIR}/bin
 .      include "../../lang/gcc47-libs/buildlink3.mk"
 .    elif !empty(CC_VERSION:Mgcc-4.8*)
 .      include "../../lang/gcc48-libs/buildlink3.mk"
+.    elif !empty(CC_VERSION:Mgcc-4.9*)
+.      include "../../lang/gcc49-libs/buildlink3.mk"
 .    else
 PKG_FAIL_REASON=	"No USE_PKGSRC_GCC_RUNTIME support for ${CC_VERSION}"
 .    endif

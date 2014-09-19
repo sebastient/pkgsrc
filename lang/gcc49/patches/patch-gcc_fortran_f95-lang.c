@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-gcc_fortran_f95-lang.c,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 No NetBSD the 'cabs' and 'cabsf' functions are are __RENAME so that
 thay have '__c99_' prefixes.

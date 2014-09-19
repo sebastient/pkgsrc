@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libjava_contrib_rebuild-gcj-db.in,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 No need to use bash for this small script.
 

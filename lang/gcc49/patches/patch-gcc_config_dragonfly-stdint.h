@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-gcc_config_dragonfly-stdint.h,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Support DragonFly.
 

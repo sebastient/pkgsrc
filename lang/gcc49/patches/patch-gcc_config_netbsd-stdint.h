@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-gcc_config_netbsd-stdint.h,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Copy gcc/config/freebsd-stdint.h to gcc/config/netbsd-stdint.h.
 

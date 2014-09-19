@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-libiberty_Makefile.in,v 1.1 2014/09/04 18:43:11 jperkin Exp $
 
 Ensure we look for includes in our include directory first, otherwise
 we may pick up an incompatible ansidecl.h, e.g. from binutils.

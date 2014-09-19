@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.1064 2014/08/28 04:07:40 jnemeth Exp $
+# $NetBSD: Makefile,v 1.1066 2014/09/13 16:40:04 wen Exp $
 #
 
 COMMENT=	Packages related to the World Wide Web
@@ -412,6 +412,7 @@ SUBDIR+=	p5-LWP-Authen-Negotiate
 SUBDIR+=	p5-LWP-Authen-Wsse
 SUBDIR+=	p5-LWP-MediaTypes
 SUBDIR+=	p5-LWP-Online
+SUBDIR+=	p5-LWP-Protocol-PSGI
 SUBDIR+=	p5-LWP-Protocol-https
 SUBDIR+=	p5-LWP-UserAgent-Determined
 SUBDIR+=	p5-LWPx-ParanoidAgent
@@ -491,6 +492,7 @@ SUBDIR+=	p5-URI-Nested
 SUBDIR+=	p5-URI-db
 SUBDIR+=	p5-VRML
 SUBDIR+=	p5-WWW-Amazon-Wishlist
+SUBDIR+=	p5-WWW-CSRF
 SUBDIR+=	p5-WWW-Curl
 SUBDIR+=	p5-WWW-Facebook-API
 SUBDIR+=	p5-WWW-Mechanize
