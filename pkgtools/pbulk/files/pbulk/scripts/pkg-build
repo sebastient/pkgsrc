@@ -260,11 +260,13 @@ logpkgtime
 # them single-threaded at the end of a bulk build and avoids re-computing for
 # packages we have already built.
 if [ -z "${restricted}" ]; then
-	mkdir -p ${packages}/checksums
+	mkdir -p ${packages}/checksums ${packages}/pkginfo
 	(
 		cd ${packages}
 		${digest} SHA512 All/${pkgname}.tgz \
 		    > ${packages}/checksums/${pkgname}.sha512
+		${pkg_info} -X All/${pkgname}.tgz \
+		    > ${packages}/pkginfo/${pkgname}.pkginfo
 	)
 fi
 
