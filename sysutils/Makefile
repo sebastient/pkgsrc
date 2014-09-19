@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.614 2014/08/30 11:04:54 wiedi Exp $
+# $NetBSD: Makefile,v 1.617 2014/09/11 22:00:55 szptvlfn Exp $
 #
 
 COMMENT=	System utilities
@@ -97,6 +97,7 @@ SUBDIR+=	desktop-file-utils
 SUBDIR+=	detox
 SUBDIR+=	devkitd
 SUBDIR+=	di
+SUBDIR+=	direvent
 SUBDIR+=	dirsize
 SUBDIR+=	dirvish
 SUBDIR+=	disk-filltest
@@ -245,6 +246,7 @@ SUBDIR+=	heirloom-whodo
 SUBDIR+=	heirloom-xargs
 SUBDIR+=	heirloom-yes
 SUBDIR+=	hfsutils
+SUBDIR+=	hs-temporary
 SUBDIR+=	htop
 SUBDIR+=	i2ocfg
 SUBDIR+=	i810switch
@@ -280,6 +282,8 @@ SUBDIR+=	libgtop
 SUBDIR+=	libirman
 SUBDIR+=	libisoburn
 SUBDIR+=	libisofs
+SUBDIR+=	liblogging
+SUBDIR+=	liblognorm
 SUBDIR+=	libnotify
 SUBDIR+=	libol
 SUBDIR+=	liboobs
@@ -408,6 +412,15 @@ SUBDIR+=	rfstool
 SUBDIR+=	roller
 SUBDIR+=	rox
 SUBDIR+=	rsnapshot
+SUBDIR+=	rsyslog
+SUBDIR+=	rsyslog-dbi
+SUBDIR+=	rsyslog-gnutls
+SUBDIR+=	rsyslog-gssapi
+SUBDIR+=	rsyslog-libgcrypt
+SUBDIR+=	rsyslog-mysql
+SUBDIR+=	rsyslog-pgsql
+SUBDIR+=	rsyslog-rabbitmq
+SUBDIR+=	rsyslog-snmp
 SUBDIR+=	rtty
 SUBDIR+=	ruby-activesambaldap
 SUBDIR+=	ruby-chef

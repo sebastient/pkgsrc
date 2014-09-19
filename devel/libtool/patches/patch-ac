@@ -1,4 +1,4 @@
-$NetBSD: patch-ac,v 1.31 2014/05/10 15:32:08 joerg Exp $
+$NetBSD: patch-ac,v 1.33 2014/09/10 10:44:58 richard Exp $
 
 --- libltdl/config/ltmain.sh.orig	Mon Oct 17 10:19:11 2011
 +++ libltdl/config/ltmain.sh

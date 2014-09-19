@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.30 2014/07/04 13:01:12 schmonz Exp $
+# $NetBSD: Makefile,v 1.33 2014/09/12 13:52:20 schmonz Exp $
 
-DISTNAME=		html2text-2014.7.3
+DISTNAME=		html2text-2014.9.8
 PKGNAME=		${PYPKGPREFIX}-${DISTNAME}
 CATEGORIES=		textproc python
 MASTER_SITES=		http://pypi.python.org/packages/source/h/html2text/
@@ -12,6 +12,8 @@ LICENSE=		gnu-gpl-v2
 
 PYTHON_SELF_CONFLICT=	yes
 PYDISTUTILSPKG=		yes
+REPLACE_PYTHON=		html2text/__init__.py
 
+.include "../../lang/python/application.mk"
 .include "../../lang/python/egg.mk"
 .include "../../mk/bsd.pkg.mk"
