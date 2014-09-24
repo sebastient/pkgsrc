@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.800 2014/09/10 21:39:49 szptvlfn Exp $
+# $NetBSD: Makefile,v 1.804 2014/09/19 22:47:06 brook Exp $
 #
 
 COMMENT=	Text processing utilities (does not include desktop publishing)
@@ -9,6 +9,10 @@ SUBDIR+=	GutenMark
 SUBDIR+=	GutenMark-words
 SUBDIR+=	Markdown
 SUBDIR+=	OdfConverter
+SUBDIR+=	R-formatR
+SUBDIR+=	R-highr
+SUBDIR+=	R-markdown
+SUBDIR+=	R-stringr
 SUBDIR+=	WordNet
 SUBDIR+=	aiksaurus
 SUBDIR+=	antiword
