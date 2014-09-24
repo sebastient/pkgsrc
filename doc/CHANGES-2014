@@ -1,4 +1,4 @@
-$NetBSD: CHANGES-2014,v 1.3590 2014/09/18 14:55:04 wiz Exp $
+$NetBSD: CHANGES-2014,v 1.3607 2014/09/24 01:07:19 rodent Exp $
 
 # PLEASE NOTE THAT THE PKGSRC REPOSITORY IS IN A FREEZE FOR NEW
 # FUNCTIONALITY IN PREPARATION FOR PKGSRC-2014Q3 BRANCH.  NO NEW
@@ -4569,3 +4569,20 @@ Changes to the packages collection and infrastructure in 2014:
 	Updated www/p5-LWPx-ParanoidAgent to 1.10nb1 [schmonz 2014-09-17]
 	Updated emulators/suse131_libcurl to 13.1nb4 [obache 2014-09-18]
 	Updated www/snownews to 1.5.12nb7 [wiz 2014-09-18]
+	Updated www/ikiwiki to 3.20140916nb1 [schmonz 2014-09-19]
+	Updated x11/wxGTK30 to 3.0.1nb3 [wiz 2014-09-19]
+	Updated graphics/netpbm to 10.67.05nb1 [wiz 2014-09-19]
+	Added graphics/R-latticeExtra version 0.6.26 [brook 2014-09-19]
+	Updated mail/sendmail to 8.14.9nb4 [jnemeth 2014-09-19]
+	Updated misc/vimpager to 1.8.9 [obache 2014-09-20]
+	Updated math/py-pytables to 3.1.1 [wiz 2014-09-20]
+	Updated comms/asterisk to 11.12.1 [jnemeth 2014-09-20]
+	Updated mail/nmh to 1.6nb1 [dholland 2014-09-20]
+	Updated net/mikutter to 3.0.6 [obache 2014-09-21]
+	Updated www/moodle to 2.7.2 [wen 2014-09-23]
+	Updated lang/nodejs to 0.10.32 [fhajny 2014-09-23]
+	Added net/p5-Net-SSH-Expect version 1.09 [he 2014-09-23]
+	Updated databases/phpmyadmin to 4.2.9 [tron 2014-09-23]
+	Updated audio/libxmp to 4.2.7nb1 [jperkin 2014-09-23]
+	Updated www/fengoffice to 2.7.1.1 [taca 2014-09-23]
+	Updated devel/mantis to 1.2.17 [rodent 2014-09-24]

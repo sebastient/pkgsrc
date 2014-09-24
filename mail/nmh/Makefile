@@ -1,8 +1,9 @@
-# $NetBSD: Makefile,v 1.84 2014/09/06 16:07:43 schnoebe Exp $
+# $NetBSD: Makefile,v 1.86 2014/09/21 00:09:24 dholland Exp $
 
 DISTNAME=		nmh-1.6
 CATEGORIES=		mail
 MASTER_SITES=		http://savannah.nongnu.org/download/nmh/
+PKGREVISION=		1
 
 MAINTAINER=		pkgsrc-users@NetBSD.org
 HOMEPAGE=		http://www.nongnu.org/nmh/
@@ -76,6 +77,14 @@ CONF_FILES=		# empty
 CONF_FILES+=		${EGDIR}/${f} ${PKG_SYSCONFDIR}/${f}
 .endfor
 
+# The configure script checks for arc4random(), but the program uses
+# arc4random_buf(); netbsd-5 (and presumably earlier) has the one but
+# not the other. Just disable it, because all it's using the
+# randomness for is message-ids.
+.if !empty(MACHINE_PLATFORM:MNetBSD-[1-5].*-*)
+CONFIGURE_ENV+=		ac_cv_func_arc4random=no
+.endif
+
 post-install:
 	${INSTALL_DATA} ${FILESDIR}/mhn.defaults.dist \
 	    ${DESTDIR}${EGDIR}/mhn.defaults
@@ -88,5 +97,5 @@ CONFIGURE_ARGS+=	--with-ndbm='gdbm_compat -lgdbm'
 CONFIGURE_ARGS+=	--with-ndbmheader=ndbm.h
 .endif
 
-.include "../../mk/termcap.buildlink3.mk"
+.include "../../mk/terminfo.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
