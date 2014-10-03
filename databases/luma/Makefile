@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.35 2014/08/20 19:39:02 wiz Exp $
+# $NetBSD: Makefile,v 1.38 2014/09/29 12:27:16 jperkin Exp $
 
 DISTNAME=	luma-3.0.7
 CATEGORIES=	databases
@@ -20,6 +20,18 @@ SUBST_STAGE.luma=	pre-configure
 SUBST_FILES.luma=	luma/luma.py
 SUBST_SED.luma=		-e "s|@PATH@|${PREFIX}/${PYSITELIB}/luma|"
 SUBST_MESSAGE.luma=	Adding library path to luma.
+
+post-extract:
+	for f in ${WRKSRC}/luma/luma.py ${WRKSRC}/setup.py; do	\
+		${TR} -d '\r' < $${f} > $${f}.new;		\
+		${MV} $${f}.new $${f};				\
+	done
+
+# world-writeable files
+pre-build:
+	${CHMOD} 0644 ${WRKSRC}/data/icons/*/*.png
+	${CHMOD} 0644 ${WRKSRC}/data/icons/*/*.svg
+	${CHMOD} 0644 ${WRKSRC}/data/*.desktop
 
 # some templates are not installed, do it manually
 # https://sourceforge.net/p/luma/bugs/48/
