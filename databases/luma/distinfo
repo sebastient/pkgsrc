@@ -1,4 +1,4 @@
-$NetBSD: distinfo,v 1.7 2014/08/20 19:39:02 wiz Exp $
+$NetBSD: distinfo,v 1.9 2014/09/27 09:46:24 jperkin Exp $
 
 SHA1 (luma-3.0.7.zip) = 6b82ddc1ac5948b02a2843c3a4dd76cf6c797494
 RMD160 (luma-3.0.7.zip) = 30577b1afae57734c4e1b7fdff0dfc4fd7543001
