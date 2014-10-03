@@ -1,4 +1,4 @@
-$NetBSD: CHANGES-2014,v 1.3607 2014/09/24 01:07:19 rodent Exp $
+$NetBSD: CHANGES-2014,v 1.3634 2014/10/01 00:20:47 roy Exp $
 
 # PLEASE NOTE THAT THE PKGSRC REPOSITORY IS IN A FREEZE FOR NEW
 # FUNCTIONALITY IN PREPARATION FOR PKGSRC-2014Q3 BRANCH.  NO NEW
@@ -4586,3 +4586,32 @@ Changes to the packages collection and infrastructure in 2014:
 	Updated audio/libxmp to 4.2.7nb1 [jperkin 2014-09-23]
 	Updated www/fengoffice to 2.7.1.1 [taca 2014-09-23]
 	Updated devel/mantis to 1.2.17 [rodent 2014-09-24]
+	Updated www/nginx to 1.6.2 [kim 2014-09-24]
+	Updated shells/bash to 4.3.025 [wiz 2014-09-24]
+	Updated sysutils/xenkernel42 to 4.2.5 [bouyer 2014-09-26]
+	Updated sysutils/xentools42 to 4.2.5 [bouyer 2014-09-26]
+	Updated sysutils/xenkernel41 to 4.1.6.1nb11 [bouyer 2014-09-26]
+	Updated lang/go to 1.3.2 [wiz 2014-09-26]
+	Updated security/pinepgp to 0.18.0nb4 [mspo 2014-09-27]
+	Updated net/dhcpcd to 6.4.7 [roy 2014-09-27]
+	Updated graphics/feh to 2.12 [szptvlfn 2014-09-27]
+	Updated net/mikutter to 3.0.6nb1 [obache 2014-09-27]
+	Updated mail/opendmarc to 1.3.0 [pettai 2014-09-27]
+	Updated security/opendnssec to 1.4.6 [pettai 2014-09-27]
+	Updated security/ykpers to 1.15.3 [pettai 2014-09-27]
+	Updated security/ykclient to 2.12 [pettai 2014-09-27]
+	Updated net/nsd to 4.1.0 [pettai 2014-09-27]
+	Updated security/libyubikey to 1.12 [pettai 2014-09-27]
+	Updated security/py-hsm to 1.0.4k [pettai 2014-09-27]
+	Updated net/knot to 1.4.7 [pettai 2014-09-27]
+	Updated www/mediawiki to 1.23.4 [wen 2014-09-28]
+	Updated www/php-concrete5 to 5.6.3.2 [taca 2014-09-28]
+	Updated www/php-ja-wordpress to 3.9.2 [taca 2014-09-28]
+	Updated shells/bash to 4.3.027 [wiz 2014-09-29]
+	Updated graphics/netpbm to 10.67.05nb2 [gson 2014-09-29]
+	Updated misc/ruby-bundler to 1.7.3 [taca 2014-09-29]
+	Updated lang/php55 to 5.5.17 [taca 2014-09-30]
+	Updated lang/php54 to 5.4.33 [taca 2014-09-30]
+	Updated chat/irssi-icb to 0.15 [jperkin 2014-09-30]
+	Updated lang/ruby193-base to 1.9.3p547nb1 [taca 2014-09-30]
+	Updated net/dhcpcd to 6.4.3nb1 [roy 2014-10-01]
