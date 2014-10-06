@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.6 2014/08/27 16:10:49 wiz Exp $
+# $NetBSD: Makefile,v 1.8 2014/10/01 12:46:17 wiz Exp $
 
-DISTNAME=	vdirsyncer-0.2.5
+DISTNAME=	vdirsyncer-0.3.0
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME}
 CATEGORIES=	time
 MASTER_SITES=	https://pypi.python.org/packages/source/v/vdirsyncer/
@@ -9,6 +9,8 @@ MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://pypi.python.org/pypi/vdirsyncer/
 COMMENT=	Synchronization tool for vdir
 LICENSE=	mit
+
+EXTRACT_USING=	bsdtar	# gtar cannot handle pre-1970 timestamps
 
 DEPENDS+=	${PYPKGPREFIX}-click>=2.0:../../devel/py-click
 DEPENDS+=	${PYPKGPREFIX}-icalendar>=3.6:../../time/py-icalendar

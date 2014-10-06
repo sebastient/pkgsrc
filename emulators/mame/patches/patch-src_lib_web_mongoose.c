@@ -1,4 +1,4 @@
-$NetBSD: patch-src_lib_web_mongoose.c,v 1.1 2014/07/25 15:28:56 wiz Exp $
+$NetBSD: patch-src_lib_web_mongoose.c,v 1.3 2014/09/24 20:20:49 wiz Exp $
 
 If _XOPEN_SOURCE is defined to 600, NetBSD does not provide strtoll
 and other stuff.
