@@ -79,6 +79,7 @@ cgi			Enable CGI support.
 chasen			Use ChaSen as the Japanese Morphological Analzer.
 cjk			Enable Chinese/Japanese/Korean support.
 clamav			Enable ClamAV support.
+clang-static-analyzer	Install the clang static analyzer.
 claws-mail-jpilot	Add jpilot support.
 clisp			Common/C Lisp.
 clutter			Use Clutter for graphics support.
@@ -132,6 +133,7 @@ dspam-virtualusers	Enable support for virtual users.
 dtrace			Enable DTrace support.
 dts			Enable DTS Coherent Acoustics support.
 dv			Enable usage of the libdv library.
+dvdcss			Enable CSS support for DVDs.
 dvdnav			Enable libdvdnav support to navigate DVDs.
 dvdread			Enable reproduction of DVDs.
 dvi			Enable device independent file format (mostly TeX) support.
@@ -206,6 +208,7 @@ gcc-java		Build the gcc Java frontend, tools and libraries.
 gcc-multilib		Build libraries for multiple ABI's.
 gcc-objc		Build the gcc Objective-C frontend and libraries.
 gcc-objc++		Build the gcc Objective-C++ frontend and libraries.
+gconf			Use GConf to store preferences.
 gd			Use GD to render graphical output.
 gdal			Use the GDAL library.
 gdb6-tui		Build the tui application.
@@ -249,6 +252,7 @@ gtk3-atk-bridge		Enable ATK support.
 gtksourceview		Enable gtksourceview support.
 gtksourceview2		Enable gtksourceview2 support.
 gtkspell		Enable gtkspell support.
+gtkwave-tcl		Enable tcl for gtkwave.
 guile			Enable support for GUILE.
 gzip			Enable compression using gzip.
 hal			Support for the freedesktop.org Hardware Abstraction Layer.
@@ -405,6 +409,7 @@ libssh2			Use libssh2 for SSHv2 protocol support.
 libthai			Use libthai for Thai word segmentation.
 libusb			Enable USB access.
 libvisual		Enable libvisual (audio visualisation) support.
+libvpx			Enable libvpx support.
 libwildmidi		Enable MIDI support using libwildmidi.
 libwww-aliases		Install aliases for p5-libwww (e.g. HEAD, GET etc.).
 libxml2			Use the libxml2 library for XML support.
@@ -749,6 +754,8 @@ winbind			Enable name-service switch daemon support using Windows Servers.
 wmf			Enable WMF support.
 wnn4			Use wnn for Kana-to-Kanji conversion.
 x11			Enable X11 support.
+x264			Enable x264 support.
+x265			Enable x265 support.
 xapian-flint-backend	Enable "Flint" format Xapian database support.
 xapian-quartz-backend	Enable "Quartz" format Xapian database support.
 xaw			Enable Xaw support.
