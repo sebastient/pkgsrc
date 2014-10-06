@@ -1,7 +1,7 @@
-# $NetBSD: Makefile,v 1.4 2014/09/16 21:44:52 wiz Exp $
+# $NetBSD: Makefile,v 1.6 2014/10/04 12:49:06 wiz Exp $
 
 DISTNAME=	mpv-0.5.1
-PKGREVISION=	2
+PKGREVISION=	4
 CATEGORIES=	multimedia
 MASTER_SITES=	-https://github.com/mpv-player/mpv/archive/v${PKGVERSION_NOREV}${EXTRACT_SUFX}
 

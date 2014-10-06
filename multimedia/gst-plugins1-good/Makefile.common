@@ -1,21 +1,21 @@
-# $NetBSD: Makefile.common,v 1.10 2014/08/31 22:23:04 wiz Exp $
+# $NetBSD: Makefile.common,v 1.12 2014/10/05 16:41:07 wiz Exp $
 #
 # used by audio/gst-plugins1-flac/Makefile
-# used by multimedia/gst-plugins1-v4l2/Makefile
 # used by audio/gst-plugins1-jack/Makefile
-# used by graphics/gst-plugins1-cairo/Makefile
-# used by graphics/gst-plugins1-jpeg/Makefile
-# used by graphics/gst-plugins1-png/Makefile
 # used by audio/gst-plugins1-oss/Makefile
 # used by audio/gst-plugins1-pulse/Makefile
 # used by audio/gst-plugins1-speex/Makefile
-# used by multimedia/gst-plugins1-vpx/Makefile
-# used by x11/gst-plugins1-x11/Makefile
 # used by audio/gst-plugins1-wavpack/Makefile
-#
+# used by graphics/gst-plugins1-cairo/Makefile
+# used by graphics/gst-plugins1-jpeg/Makefile
+# used by graphics/gst-plugins1-png/Makefile
+# used by multimedia/gst-plugins1-v4l2/Makefile
+# used by multimedia/gst-plugins1-vpx/Makefile
+# used by net/gst-plugins1-soup/Makefile
+# used by x11/gst-plugins1-x11/Makefile
 
 GST_PLUGINS1_TYPE=	good
-GST_PLUGINS1_VER=	1.4.1
+GST_PLUGINS1_VER=	1.4.3
 
 # Disable all drivers and features by default.
 .for driver in	aalib \
