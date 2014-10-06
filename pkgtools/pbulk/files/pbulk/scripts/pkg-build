@@ -41,7 +41,8 @@ fi
 logpkgtime() {
 	stop_time=`date '+%s'`
 	build_time=`expr ${stop_time} - ${start_time}`
-	echo "${pkgname}:${build_time}" >>${loc}/pkgtimes
+	mkdir -p ${packages}/pkgtimes
+	echo "${build_time}" >${packages}/pkgtimes/${pkgname}.pkgtime
 }
 
 cleanup() {
@@ -152,6 +153,15 @@ if [ `@ID@ -u` -ne 0 ]; then
 fi
 
 ${pkg_up_to_date_script} ${pkgname} ${dependencies} && exit 0
+
+# Ensure we start with a clean passwd/group.
+for file in group passwd shadow user_attr; do
+	if [ -f ${loc}/${file} ]; then
+		cp -p ${loc}/${file} /etc/${file}
+	else
+		cp -p /etc/${file} ${loc}/${file}
+	fi
+done
 
 set -e
 
