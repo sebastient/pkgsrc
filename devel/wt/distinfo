@@ -3,3 +3,7 @@ $NetBSD$
 SHA1 (wt-3.3.3.tar.gz) = 7a26bc201e904974be89457a83d69333d808a0cc
 RMD160 (wt-3.3.3.tar.gz) = 3eb6da7162f7de0f36fb7371b22bd004f606a0c8
 Size (wt-3.3.3.tar.gz) = 32689415 bytes
+SHA1 (patch-CMakeLists.txt) = a6307e368650e494b69440fcdcdbde381d28c480
+SHA1 (patch-src_Wt_Dbo_SqlQueryParse.C) = f55607aaa9bed3c7573b7a2b073cf4de7dc32ba9
+SHA1 (patch-src_Wt_Json_Parser.C) = 90a59be7307e5287a5cef468ae5fe6f512c554d7
+SHA1 (patch-src_Wt_Render_CssParser.C) = 64e46b0d58dd6f3fb8be7c88e6ab1e79ac1f8277
