@@ -1,8 +1,8 @@
-# $NetBSD: Makefile,v 1.113 2014/08/25 14:27:01 adam Exp $
+# $NetBSD: Makefile,v 1.115 2014/11/23 06:39:36 markd Exp $
 #
 # Please, also update databases/ruby-rrdtool
 
-DISTNAME=	rrdtool-1.4.8
+DISTNAME=	rrdtool-1.4.9
 CATEGORIES=	databases graphics net
 MASTER_SITES=	http://oss.oetiker.ch/rrdtool/pub/
 
@@ -23,6 +23,7 @@ CONFIGURE_ARGS+=	--disable-tcl
 CONFIGURE_ARGS+=	--disable-python
 CONFIGURE_ARGS+=	--disable-ruby
 CONFIGURE_ARGS+=	--disable-lua
+CONFIGURE_ARGS+=	--disable-libdbi
 
 PTHREAD_OPTS+=		require
 PERL5_CONFIGURE=	no
